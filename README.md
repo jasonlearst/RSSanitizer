@@ -1,6 +1,6 @@
-# RSSanitize
+# RSSanitizer
 
-RSSanitize proxies an RSS feed while performing on the fly sanitization of the text in the feed.
+RSSanitizer proxies an RSS feed while performing on the fly sanitization of the text in the feed.
 
 ## Motivation
 

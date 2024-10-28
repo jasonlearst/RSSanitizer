@@ -1,6 +1,6 @@
 {
 	// For quick reference: https://containers.dev/implementors/json_reference/
-	"name": "RSSanitize",
+	"name": "RSSanitizer",
 	"image": "python:3.12-bookworm",
 		//"build": {
 	//	"context": "..",
