@@ -1,6 +1,7 @@
 import re
 import requests
 import flask
+from lxml import etree
 from flask import Flask, render_template, Response, make_response
 
 app = Flask(__name__)
@@ -67,12 +68,11 @@ def proxy_xkcd(feed_url):
 
 def get_modified_response(r):
     new_content = r.content
-    new_content = new_content.decode("utf-8") # both rss/atom use utf-8
-    # for orig, replacement in REPLACEMENTS.iteritems():
-    #     new_content = new_content.replace(orig, replacement)
-    new_content = new_content.encode("utf-8")
+    my_parser = etree.XMLParser(recover=True)
+    xml = etree.fromstring(new_content, parser=my_parser)
+    cleaned_xml_string = etree.tostring(xml)
 
-    resp = make_response(new_content, r.status_code) # use status code of request
+    resp = make_response(cleaned_xml_string, r.status_code) # use status code of request
     resp.mimetype = "text/xml" # both rss/atom feeds use same text/xml utf-8 content type
     for h in COPY_HEADERS:
         if h in r.headers:
