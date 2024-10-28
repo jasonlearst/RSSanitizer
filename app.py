@@ -7,7 +7,7 @@ from flask import Flask, render_template, Response, make_response
 app = Flask(__name__)
 WW_RSS_URL = "https://podcast.wandwmusic.nl/podcast.php"
 
-FEED_REQ_UA = 'xkcdmobile-feed-proxy jeremie@miserez.org'
+FEED_REQ_UA = 'ww-rssanitizer jason@jasonlearst.com'
 FEED_REQ_TIMEOUT=2.0
 
 COPY_HEADERS = [
