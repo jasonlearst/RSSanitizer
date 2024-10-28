@@ -58,7 +58,7 @@ def get_modified_response(r):
     new_content = r.content
     my_parser = etree.XMLParser(recover=True) # from SO: https://stackoverflow.com/a/59645304
     xml = etree.fromstring(new_content, parser=my_parser)
-    cleaned_xml_string = etree.tostring(xml)
+    cleaned_xml_string = etree.tostring(xml, encoding="UTF-8", xml_declaration=True)
 
     resp = make_response(cleaned_xml_string, r.status_code) # use status code of request
     resp.mimetype = "application/rss+xml" # both rss/atom feeds use same text/xml utf-8 content type
