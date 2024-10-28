@@ -48,7 +48,7 @@ def proxy_rss(feed_url):
         req_headers['User-Agent'] = FEED_REQ_UA
 
         req = requests.Request('GET', feed_url, headers=req_headers).prepare()
-        r = requests.Session().send(req, verify=False, timeout=FEED_REQ_TIMEOUT)
+        r = requests.Session().send(req, timeout=FEED_REQ_TIMEOUT)
         return get_modified_response(r)
     except Exception as e:
         print(e)
