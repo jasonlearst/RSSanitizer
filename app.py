@@ -61,7 +61,7 @@ def get_modified_response(r):
     cleaned_xml_string = etree.tostring(xml)
 
     resp = make_response(cleaned_xml_string, r.status_code) # use status code of request
-    resp.mimetype = "text/xml" # both rss/atom feeds use same text/xml utf-8 content type
+    resp.mimetype = "application/rss+xml" # both rss/atom feeds use same text/xml utf-8 content type
     for h in COPY_HEADERS:
         if h in r.headers:
             resp.headers[h] = r.headers[h]
